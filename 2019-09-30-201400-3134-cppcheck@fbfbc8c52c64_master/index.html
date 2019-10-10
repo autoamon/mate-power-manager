@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - mate-power-manager</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+    <script language="javascript">
+      function getStyle(el,styleProp) {
+        if (el.currentStyle)
+          var y = el.currentStyle[styleProp];
+        else if (window.getComputedStyle)
+          var y = document.defaultView.getComputedStyle(el,null).getPropertyValue(styleProp);
+        return y;
+      }
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+        if (el.style.display == "block") {
+          el.style.display = "none";
+          mark.innerHTML = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.innerHTML = "[-]";
+        }
+      }
+      function init_expandables() {
+        var elts = document.getElementsByClassName("expandable");
+        for (var i = 0; i < elts.length; i++) {
+          var el = elts[i];
+          var clickable = el.getElementsByTagName("span")[0];
+          var marker = clickable.getElementsByClassName("marker")[0];
+          var content = el.getElementsByClassName("content")[0];
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.onclick = toggle;
+        }
+      }
+      function set_class_display(c, st) {
+        var elements = document.querySelectorAll('.' + c),
+            len = elements.length;
+        for (i = 0; i < len; i++) {
+            elements[i].style.display = st;
+        }
+      }
+      function toggle_class_visibility(id) {
+        var box = document.getElementById(id);
+        set_class_display(id, box.checked ? '' : 'none');
+      }
+      function toggle_all(){
+        var elts = document.getElementsByTagName("input");
+        for (var i = 1; i < elts.length; i++) {           
+          var el = elts[i];
+          el.checked ? el.checked=false : el.checked=true;
+          toggle_class_visibility(el.id);        
+        }            
+      }
+
+    </script>
+  </head>
+  <body onload="init_expandables()">
+      <div id="header">
+        <h1>Cppcheck report - mate-power-manager:  </h1>
+      </div>
+      <div id="menu_index">
+       <p id="filename"><a href="index.html">Defect summary;</a> </p>
+       <table>           <tr><th>Show</th><th>#</th><th>Defect ID</th></tr><label><input type="checkbox" onclick="toggle_all()" checked/> Toggle all</label>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='variableScope' name='variableScope' checked></td><td>38</td><td>variableScope</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='unreadVariable' name='unreadVariable' checked></td><td>9</td><td>unreadVariable</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='unusedStructMember' name='unusedStructMember' checked></td><td>9</td><td>unusedStructMember</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='unusedVariable' name='unusedVariable' checked></td><td>6</td><td>unusedVariable</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='duplicateCondition' name='duplicateCondition' checked></td><td>5</td><td>duplicateCondition</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='knownConditionTrueFalse' name='knownConditionTrueFalse' checked></td><td>2</td><td>knownConditionTrueFalse</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='invalidscanf' name='invalidscanf' checked></td><td>1</td><td>invalidscanf</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='missingInclude' name='missingInclude' checked></td><td>1</td><td>missingInclude</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='redundantAssignment' name='redundantAssignment' checked></td><td>1</td><td>redundantAssignment</td></tr>           <tr><td></td><td>72</td><td>total</td></tr>       </table>       <a href="stats.html">Statistics</a></p>
+      </div>
+      <div id="content_index">
+       <table>
+       <tr><th>Line</th><th>Id</th><th>CWE</th><th>Severity</th><th>Message</th></tr>
+       <tr><td colspan='5'><a href='22.html'></a></td></tr>
+         <tr class="missingInclude"><td></td><td>missingInclude</td><td></td><td>information</td><td>Cppcheck cannot find all the include files (use --check-config for details)</td></tr>
+       <tr><td colspan='5'><a href='0.html'>applets/brightness/brightness-applet.c</a></td></tr>
+       <tr class="variableScope"><td><a href="0.html#line-265">265</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'context' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="0.html#line-528">528</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'i' can be reduced.</td></tr>
+       <tr class="unusedVariable"><td><a href="0.html#line-986">986</a></td><td>unusedVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Unused variable: connection</td></tr>
+       <tr><td colspan='5'><a href='1.html'>applets/brightness/egg-debug.c</a></td></tr>
+       <tr class="variableScope"><td><a href="1.html#line-84">84</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'i' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='2.html'>applets/inhibit/egg-debug.c</a></td></tr>
+       <tr class="variableScope"><td><a href="2.html#line-84">84</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'i' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='3.html'>applets/inhibit/inhibit-applet.c</a></td></tr>
+       <tr class="unusedVariable"><td><a href="3.html#line-464">464</a></td><td>unusedVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Unused variable: connection</td></tr>
+       <tr><td colspan='5'><a href='4.html'>src/egg-debug.c</a></td></tr>
+       <tr class="variableScope"><td><a href="4.html#line-84">84</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'i' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='5.html'>src/egg-idletime.c</a></td></tr>
+       <tr class="variableScope"><td><a href="5.html#line-174">174</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'alarm' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="5.html#line-225">225</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'alarm' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="5.html#line-437">437</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'alarm' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='6.html'>src/gpm-backlight.c</a></td></tr>
+       <tr class="redundantAssignment"><td><a href="6.html#line-336">336</a></td><td>redundantAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'scale' is reassigned a value before the old one has been used.</td></tr>
+       <tr class="unreadVariable"><td><a href="6.html#line-339">339</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'scale' is assigned a value that is never used.</td></tr>
+       <tr><td colspan='5'><a href='7.html'>src/gpm-brightness.c</a></td></tr>
+       <tr class="variableScope"><td><a href="7.html#line-523">523</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'resource' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='8.html'>src/gpm-button.c</a></td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-257">257</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'proxy' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-258">258</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'res' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='9.html'>src/gpm-control.c</a></td></tr>
+       <tr class="variableScope"><td><a href="9.html#line-139">139</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'console' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='10.html'>src/gpm-engine.c</a></td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-121">121</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'device' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-168">168</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'device' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-486">486</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'composite' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-529">529</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'device' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-665">665</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'device_tmp' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-731">731</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'device' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="10.html#line-761">761</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'device' can be reduced.</td></tr>
+       <tr class="unusedVariable"><td><a href="10.html#line-800">800</a></td><td>unusedVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Unused variable: i</td></tr>
+       <tr><td colspan='5'><a href='11.html'>src/gpm-graph-widget.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="11.html#line-62">62</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >struct member 'GpmGraphWidgetPrivate::title' is never used.</td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-97">97</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'keyitem' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-383">383</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'obj' can be reduced.</td></tr>
+       <tr class="unreadVariable"><td><a href="11.html#line-535">535</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'offsetx' is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="11.html#line-536">536</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'offsety' is assigned a value that is never used.</td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-601">601</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'text' can be reduced.</td></tr>
+       <tr class="knownConditionTrueFalse"><td><a href="11.html#line-843">843</a></td><td>knownConditionTrueFalse</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Same expression on both sides of '/'.</td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-899">899</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'data' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-998">998</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'keydataitem' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="11.html#line-1036">1036</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'keydataitem' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='12.html'>src/gpm-kbd-backlight.c</a></td></tr>
+       <tr class="knownConditionTrueFalse"><td><a href="12.html#line-757">757</a></td><td>knownConditionTrueFalse</td><td><a href='https://cwe.mitre.org/data/definitions/570.html'>570</a></td><td>style</td><td >Condition 'backlight->priv->max_brightness>1' is always false</td></tr>
+       <tr><td colspan='5'><a href='13.html'>src/gpm-load.c</a></td></tr>
+       <tr class="invalidscanf"><td><a href="13.html#line-183">183</a></td><td>invalidscanf</td><td><a href='https://cwe.mitre.org/data/definitions/119.html'>119</a></td><td>warning</td><td >sscanf() without field width limits can crash with huge input data.</td></tr>
+       <tr><td colspan='5'><a href='14.html'>src/gpm-manager.c</a></td></tr>
+       <tr class="variableScope"><td><a href="14.html#line-530">530</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'dialog_error' can be reduced.</td></tr>
+       <tr class="unusedVariable"><td><a href="14.html#line-952">952</a></td><td>unusedVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Unused variable: timeout</td></tr>
+       <tr class="variableScope"><td><a href="14.html#line-1248">1248</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'device' can be reduced.</td></tr>
+       <tr class="duplicateCondition"><td><a href="14.html#line-1299">1299</a></td><td>duplicateCondition</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The if condition is the same as the previous if condition</td></tr>
+       <tr class="duplicateCondition"><td><a href="14.html#line-1418">1418</a></td><td>duplicateCondition</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The if condition is the same as the previous if condition</td></tr>
+       <tr class="duplicateCondition"><td><a href="14.html#line-1582">1582</a></td><td>duplicateCondition</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The if condition is the same as the previous if condition</td></tr>
+       <tr class="unreadVariable"><td><a href="14.html#line-1735">1735</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'fd' is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="14.html#line-1822">1822</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'g_connection' is assigned a value that is never used.</td></tr>
+       <tr><td colspan='5'><a href='15.html'>src/gpm-prefs-core.c</a></td></tr>
+       <tr class="variableScope"><td><a href="15.html#line-495">495</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'notebook' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="15.html#line-574">574</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'widget' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="15.html#line-633">633</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'widget' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="15.html#line-673">673</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'device' can be reduced.</td></tr>
+       <tr class="unreadVariable"><td><a href="15.html#line-825">825</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'retval' is assigned a value that is never used.</td></tr>
+       <tr><td colspan='5'><a href='16.html'>src/gpm-prefs.c</a></td></tr>
+       <tr class="unusedVariable"><td><a href="16.html#line-70">70</a></td><td>unusedVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Unused variable: ret</td></tr>
+       <tr><td colspan='5'><a href='17.html'>src/gpm-statistics.c</a></td></tr>
+       <tr class="variableScope"><td><a href="17.html#line-235">235</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'point_new' can be reduced.</td></tr>
+       <tr class="duplicateCondition"><td><a href="17.html#line-443">443</a></td><td>duplicateCondition</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The if condition is the same as the previous if condition</td></tr>
+       <tr class="duplicateCondition"><td><a href="17.html#line-505">505</a></td><td>duplicateCondition</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The if condition is the same as the previous if condition</td></tr>
+       <tr class="variableScope"><td><a href="17.html#line-526">526</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'smoothed' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="17.html#line-1030">1030</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'item' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="17.html#line-1031">1031</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'text' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="17.html#line-1149">1149</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'device' can be reduced.</td></tr>
+       <tr class="unusedVariable"><td><a href="17.html#line-1212">1212</a></td><td>unusedVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Unused variable: text</td></tr>
+       <tr class="unreadVariable"><td><a href="17.html#line-1266">1266</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'object_path' is assigned a value that is never used.</td></tr>
+       <tr class="variableScope"><td><a href="17.html#line-1282">1282</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'device_tmp' can be reduced.</td></tr>
+       <tr class="unreadVariable"><td><a href="17.html#line-1599">1599</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'retval' is assigned a value that is never used.</td></tr>
+       <tr><td colspan='5'><a href='18.html'>src/gpm-tray-icon.c</a></td></tr>
+       <tr class="variableScope"><td><a href="18.html#line-224">224</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'device' can be reduced.</td></tr>
+       <tr><td colspan='5'><a href='19.html'>src/gsd-media-keys-window.c</a></td></tr>
+       <tr class="unreadVariable"><td><a href="19.html#line-655">655</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'screen' is assigned a value that is never used.</td></tr>
+       <tr><td colspan='5'><a href='20.html'>src/mate-power-preferences-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="20.html#line-10">10</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >union member 'Anonymous0::alignment' is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="20.html#line-10">10</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >union member 'Anonymous0::ptr' is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="20.html#line-194">194</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >union member 'Anonymous0::alignment' is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="20.html#line-194">194</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >union member 'Anonymous0::ptr' is never used.</td></tr>
+       <tr><td colspan='5'><a href='21.html'>src/mate-power-statistics-resources.c</a></td></tr>
+       <tr class="unusedStructMember"><td><a href="21.html#line-10">10</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >union member 'Anonymous0::alignment' is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="21.html#line-10">10</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >union member 'Anonymous0::ptr' is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="21.html#line-141">141</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >union member 'Anonymous0::alignment' is never used.</td></tr>
+       <tr class="unusedStructMember"><td><a href="21.html#line-141">141</a></td><td>unusedStructMember</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >union member 'Anonymous0::ptr' is never used.</td></tr>
+       </table>
+      </div>
+      <div id="footer">
+        <p>
+         Cppcheck 1.88 - a tool for static C/C++ code analysis</br>
+         </br>
+         Internet: <a href="http://cppcheck.net">http://cppcheck.net</a></br>
+         IRC: <a href="irc://irc.freenode.net/cppcheck">irc://irc.freenode.net/cppcheck</a></br>
+        <p>
+      </div>
+  </body>
+</html>
